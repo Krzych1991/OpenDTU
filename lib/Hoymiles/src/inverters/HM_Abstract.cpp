@@ -103,9 +103,19 @@ bool HM_Abstract::sendActivePowerControlRequest(float limit, const PowerLimitCon
     if (!getEnableCommands()) {
         return false;
     }
+    if (type == PowerLimitControlType::AbsolutPersistent || type == PowerLimitControlType::RelativPersistent) {
+        return false;
+    }
 
     if (type == PowerLimitControlType::RelativNonPersistent || type == PowerLimitControlType::RelativPersistent) {
         limit = min<float>(100, limit);
+        if (limit < 10) {
+            return false;
+        }
+    } else {
+        if (limit < 200) {
+            return false;
+        }
     }
 
     _activePowerControlLimit = limit;
@@ -129,6 +139,7 @@ bool HM_Abstract::sendPowerControlRequest(const bool turnOn)
     if (!getEnableCommands()) {
         return false;
     }
+    return false;
 
     if (turnOn) {
         _powerState = 1;
@@ -149,6 +160,7 @@ bool HM_Abstract::sendRestartControlRequest()
     if (!getEnableCommands()) {
         return false;
     }
+    return false;
 
     _powerState = 2;
 
