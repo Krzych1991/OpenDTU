@@ -27,9 +27,10 @@ const char* const deviceClass_name[] = { 0, "current", "energy", "power", "volta
 enum StateClassType {
     STATE_CLS_NONE = 0,
     STATE_CLS_MEASUREMENT,
-    STATE_CLS_TOTAL_INCREASING
+    STATE_CLS_TOTAL_INCREASING,
+    STATE_CLS_TOTAL
 };
-const char* const stateClass_name[] = { 0, "measurement", "total_increasing" };
+const char* const stateClass_name[] = { 0, "measurement", "total_increasing", "total" };
 
 enum CategoryType {
     CATEGORY_NONE = 0,
@@ -49,7 +50,7 @@ const byteAssign_fieldDeviceClass_t deviceFieldAssignment[] = {
     { FLD_IDC, DEVICE_CLS_CURRENT, STATE_CLS_MEASUREMENT },
     { FLD_PDC, DEVICE_CLS_PWR, STATE_CLS_MEASUREMENT },
     { FLD_YD, DEVICE_CLS_ENERGY, STATE_CLS_TOTAL_INCREASING },
-    { FLD_YT, DEVICE_CLS_ENERGY, STATE_CLS_TOTAL_INCREASING },
+    { FLD_YT, DEVICE_CLS_ENERGY, STATE_CLS_TOTAL },
     { FLD_UAC, DEVICE_CLS_VOLTAGE, STATE_CLS_MEASUREMENT },
     { FLD_IAC, DEVICE_CLS_CURRENT, STATE_CLS_MEASUREMENT },
     { FLD_PAC, DEVICE_CLS_PWR, STATE_CLS_MEASUREMENT },
