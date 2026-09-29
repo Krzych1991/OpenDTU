@@ -248,6 +248,14 @@ def analyze_hex(path: Path, repo_root: Path) -> dict:
         for rule in FIRMWARE_SERIAL_RULES
         if rule[0] in ALLOWED_SERIAL_PREFIXES and identity_matches_rule(identity, rule)
     )
+    # HM 1T MI (0x1121) and HMS 1T MI on the HM-Board (0x1124) have byte-identical
+    # identity nibbles - same DSP, same PCB. The only visible discriminator in the
+    # image is the DSP firmware's version-major: HM stays on 1.x, the HMS re-badge
+    # jumps to 2.x. When both rules match, keep only the one whose version-major
+    # actually agrees with this file's w0x06 value.
+    if "1121" in prefixes and "1124" in prefixes:
+        drop = "1124" if version_code // 10000 < 2 else "1121"
+        prefixes = [p for p in prefixes if p != drop]
 
     date = (
         decode_build_date(version_code, data_payloads)
