@@ -31,9 +31,19 @@ bool HMS_Abstract::sendActivePowerControlRequest(float limit, const PowerLimitCo
     if (!getEnableCommands()) {
         return false;
     }
+    if (type == PowerLimitControlType::AbsolutPersistent || type == PowerLimitControlType::RelativPersistent) {
+        return false;
+    }
 
     if (type == PowerLimitControlType::RelativNonPersistent || type == PowerLimitControlType::RelativPersistent) {
         limit = min<float>(100, limit);
+        if (limit < 10) {
+            return false;
+        }
+    } else {
+        if (limit < 200) {
+            return false;
+        }
     }
 
     _activePowerControlLimit = limit;
