@@ -3,6 +3,26 @@ Hoymiles Inverter DSP Firmware — Change Log
 ================================================================================
 Scope: HM (1T/2T/4T), HMS (1T/2T/4T), HMT (6T).
 
+HM-1T   V01.00.14 -> V01.00.17   (built 2023-06-30)
+  Added:
+    - Second SubCmd 0x15 alarm-history sub-handler: the alarm read now dispatches
+      to two distinct scanners in the 0x15 tree - a 2-source variant (live event
+      ring + 12-entry latched priority table) and a 3-source variant (both rings
+      + latched table). V01.00.14 had a single 469-word scanner that always
+      walked all three sources.
+  Changed:
+    - Full recompile / large-scale internal refactor between the 2021-12-09 and
+      2023-06-30 builds: ~397 of ~500 diffable functions show token-level
+      changes, most cosmetic (compiler register reallocation, code relocation).
+      No change to the top-level MainCmd command set (0x0a, 0x0b, 0x0e, 0x15,
+      0x30, 0x31, 0x51, 0x52) and no change to the 0x30/0xFF selector parse
+      path.
+    - Alarm-history reader split (see Added); the monolithic 469-word scanner
+      is gone, replaced by two smaller handlers reached via the SubCmd 0x15
+      dispatcher.
+  Removed:
+    - Nothing observable at the protocol / limit / PDL / telemetry level.
+
 HM-1T   V01.00.17 -> V01.01.00   (built 2024-01)
   Added:
     - Control loop soft-foldback limiter (scales input down ~0.1x on overshoot).
@@ -149,10 +169,6 @@ HMS-4T   V01.01.12 -> V01.01.18 (Thailand)   (built 2024-12)
 
 
 HMS-4T   V01.01.18 (Thailand) -> V01.01.29  (Thailand) (build 2026-08-25, model 0x1012)
-  Lineage: 141 functions byte-identical with 1.1.18-TH, 80 with 1.1.12, 71 with
-  2.0.04 -> 1.1.29 continues the 1.1.18 branch. The 2.0.x line is separate: none of
-  its features (DevControl 0x22 DTU-loss management, type-3 SystemConfigPara, PDL v2)
-  is present, and MainCmd 0x31 is still there.
   Added:
     - Self-test family (MainCmd 0x30) extended: new procedure 3, a state machine
       over the four DC inputs that drives the input switch GPIOs, waits up to 2000
@@ -176,12 +192,46 @@ HMS-4T   V01.01.18 (Thailand) -> V01.01.29  (Thailand) (build 2026-08-25, model 
     - MainCmd 0x52 sub-command 0x04 (three-word write into the device record, guarded
       by tag 0xFF07). Sub-commands 0x00-0x03 remain.
   Unchanged (relevant for DTU software):
-    - Command layer is 1.1.x: 0x51 set incl. 0x1E-0x21, 0x32, 0xFF; no 0x22 / 0x06;
-      0x15 set as in 1.1.18 (0x0C-0x0F gone since 1.1.18, no 0x17, hidden 0xFF
-      selector present); ActivePowerControl persists on type bit 1 only, 20 permille
-      floor, volatile limit echoed in SystemConfigPara (type-1 record).
+    - Command layer is 1.1.x:
     - No PDL: the main-loop limit applier is the equal-quarter split, as in 1.1.18.
     - Config-record layouts 1-4, temperature-derating floats F27-F29, alarm catalog.
+
+
+HMS-4T   V01.01.29 (Thailand) vs V01.01.90 (Thailand)  (build 2026-08-20, model 0x1012)
+  Added:
+    - Reactive-power setpoint selection: model-class-specific 1600 W corrections
+      are back on top of the generic thresholds that 1.1.29 had introduced. The
+      routine grew from 371 back to 1001 words. On top of the 1.1.29 outer
+      thresholds (0.72 / 0.55 / 0.39 / 0.31 of rated with +/-24 / -6 / +36 / -12
+      offsets), 1.1.90 re-adds a 1600 W branch in Q mode 3 (threshold 0.58 with
+      +8 and +24 offsets) and a Q mode 4 branch (-140 offset when p <= rated*0.31
+      and the phase-angle proxy <= -0.5). Other rated powers only see the 1.1.29
+      generic scheme.
+  Changed:
+    - Real-time record TX chain: the 431-word status/flag/scaling packer at
+      0x84E9B and its scheduling wrapper 0x845E2 are gone; the DAT_0000b880 == 3
+      branch of the >>1 scheduler now calls the (byte-identical) inverter-state
+      helper that used to sit at 0x8BD78 (0x8B793 in 1.1.90) instead. The old
+      alarm-bitfield-and-float-scaler that produced the outbound record at
+      buffer 0x440 has been split into smaller pieces reached from elsewhere;
+      the resulting frame layout was not fully re-traced.
+    - Main loop: >>9 flag branch dropped (one periodic slot removed; it was
+      already a no-op in 1.1.29). A new small helper (0x876EA) is inserted in
+      the >>1 branch immediately after the existing 0x8A5ED / 0xA95F handler
+      pair; it runs a small state machine over DAT_0000A4E5 / DAT_0000A4EC
+      (measurement/gate flags). Its exact function is not fully resolved.
+  Removed:
+    - Self-test procedure 3 (added in 1.1.29): the 240-word DC-input switch
+      state machine at 0x87B2F is gone, along with its wrapper 0x8F8A9 and the
+      per-input step / measurement helpers 0x8A727, 0x87FD3 and 0x8C056. The
+      dispatcher at 0x8AD15 (was 0x8BF89) still has cases 0 and 1 but the
+      case-3 branch that reached FUN_00087b2f has been dropped. Procedures 1
+      and 2 (start-stop / per-input measurement) remain.
+  Unchanged (relevant for DTU software):
+    - Command layer is unchanged from 1.1.29.
+    - No PDL: the main-loop limit applier is still the equal-quarter split.
+    - Config-record layouts 1-4, temperature-derating floats F27-F29, alarm
+      catalog.
 
 
 HMT-6T   V01.00.10 -> V01.02.27   (built 2024-06)
