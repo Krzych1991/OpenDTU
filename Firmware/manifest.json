@@ -1,9 +1,9 @@
 {
   "schema": 1,
-  "generated": "2026-09-28T06:58:26+00:00",
+  "generated": "2026-09-29T12:11:18+00:00",
   "repo": "xX-nichtlachen-Xx/OpenDTU",
   "ref": "FirmwareUpdate_HM_IV",
-  "commit": "6f899b7aed47aaa541f8c8c33df6100416e0be3d",
+  "commit": "1090034aceff71089436bf8509d5cac715a4a9cb",
   "base_url": "https://raw.githubusercontent.com/xX-nichtlachen-Xx/OpenDTU/FirmwareUpdate_HM_IV/Firmware/",
   "changelog_url": "https://raw.githubusercontent.com/xX-nichtlachen-Xx/OpenDTU/FirmwareUpdate_HM_IV/Firmware/Hoymiles_Inverter_Firmware_Changelog.txt",
   "mapping_url": "https://raw.githubusercontent.com/xX-nichtlachen-Xx/OpenDTU/FirmwareUpdate_HM_IV/Firmware/Inverter_Serial_to_File_Mapping.txt",
@@ -24,8 +24,25 @@
       "date": "2025-11-21T13:58:00"
     },
     {
-      "path": "HM/HM_1T_1_0_17__2023_06.hex",
-      "name": "HM_1T_1_0_17__2023_06",
+      "path": "HM/HM_1T_1_0_14.hex",
+      "name": "HM_1T_1_0_14",
+      "family": "HM",
+      "folder": "HM",
+      "size": 240224,
+      "sha256": "a7ad4044a9088511d91583902738e2bbb4ef45cdb7a470e9188153b00a9d6e46",
+      "rows": 3169,
+      "identity": "10100000",
+      "version_code": 10014,
+      "version": "1.0.14",
+      "serial_prefixes": [
+        "1121",
+        "1124"
+      ],
+      "date": "2021-12-09T12:46:00"
+    },
+    {
+      "path": "HM/HM_1T_1_0_17.hex",
+      "name": "HM_1T_1_0_17",
       "family": "HM",
       "folder": "HM",
       "size": 246836,
@@ -41,8 +58,8 @@
       "date": "2023-06-30T16:49:00"
     },
     {
-      "path": "HM/HM_1T_1_1_0__2024_01.hex",
-      "name": "HM_1T_1_1_0__2024_01",
+      "path": "HM/HM_1T_1_1_0.hex",
+      "name": "HM_1T_1_1_0",
       "family": "HM",
       "folder": "HM",
       "size": 249472,
@@ -58,8 +75,8 @@
       "date": "2024-01-15T20:46:00"
     },
     {
-      "path": "HM/HM_1T_1_5_0__2026_08.hex",
-      "name": "HM_1T_1_5_0__2026_08",
+      "path": "HM/HM_1T_1_5_0.hex",
+      "name": "HM_1T_1_5_0",
       "family": "HM",
       "folder": "HM",
       "size": 262608,
@@ -75,8 +92,8 @@
       "date": "2026-08-12T16:42:00"
     },
     {
-      "path": "HM/HM_2T_1_0_16__2022_11.hex",
-      "name": "HM_2T_1_0_16__2022_11",
+      "path": "HM/HM_2T_1_0_16.hex",
+      "name": "HM_2T_1_0_16",
       "family": "HM",
       "folder": "HM",
       "size": 243588,
@@ -91,8 +108,8 @@
       "date": "2022-11-10T16:11:00"
     },
     {
-      "path": "HM/HM_2T_1_1_2__2024_01.hex",
-      "name": "HM_2T_1_1_2__2024_01",
+      "path": "HM/HM_2T_1_1_2.hex",
+      "name": "HM_2T_1_1_2",
       "family": "HM",
       "folder": "HM",
       "size": 250172,
@@ -107,8 +124,8 @@
       "date": "2024-01-09T19:37:00"
     },
     {
-      "path": "HM/HM_2T_1_5_1__2026_08.hex",
-      "name": "HM_2T_1_5_1__2026_08",
+      "path": "HM/HM_2T_1_5_1.hex",
+      "name": "HM_2T_1_5_1",
       "family": "HM",
       "folder": "HM",
       "size": 264692,
@@ -123,8 +140,8 @@
       "date": "2026-08-07T15:27:00"
     },
     {
-      "path": "HM/HM_4T_1_0_18__2021_12.hex",
-      "name": "HM_4T_1_0_18__2021_12",
+      "path": "HM/HM_4T_1_0_18.hex",
+      "name": "HM_4T_1_0_18",
       "family": "HM",
       "folder": "HM",
       "size": 253976,
@@ -139,8 +156,8 @@
       "date": "2021-12-24T18:21:00"
     },
     {
-      "path": "HM/HM_4T_1_1_3__2024_02.hex",
-      "name": "HM_4T_1_1_3__2024_02",
+      "path": "HM/HM_4T_1_1_3.hex",
+      "name": "HM_4T_1_1_3",
       "family": "HM",
       "folder": "HM",
       "size": 261864,
@@ -155,8 +172,8 @@
       "date": "2024-02-04T13:15:00"
     },
     {
-      "path": "HM/HM_4T_1_5_0__2026_08.hex",
-      "name": "HM_4T_1_5_0__2026_08",
+      "path": "HM/HM_4T_1_5_0.hex",
+      "name": "HM_4T_1_5_0",
       "family": "HM",
       "folder": "HM",
       "size": 268536,
@@ -171,8 +188,8 @@
       "date": "2026-08-10T20:04:00"
     },
     {
-      "path": "HMS/HMS_1T_B_2_0_0__2025_09.hex",
-      "name": "HMS_1T_B_2_0_0__2025_09",
+      "path": "HMS/HMS_1T_B_2_0_0.hex",
+      "name": "HMS_1T_B_2_0_0",
       "family": "HMS",
       "folder": "HMS",
       "size": 252220,
@@ -188,8 +205,8 @@
       "date": "2025-09-04T21:07:00"
     },
     {
-      "path": "HMS/HMS_1T_MI_2_0_2__2025_12.hex",
-      "name": "HMS_1T_MI_2_0_2__2025_12",
+      "path": "HMS/HMS_1T_MI_2_0_2.hex",
+      "name": "HMS_1T_MI_2_0_2",
       "family": "HMS",
       "folder": "HMS",
       "size": 256188,
@@ -205,8 +222,8 @@
       "date": "2025-12-02T20:37:00"
     },
     {
-      "path": "HMS/HMS_2T_1_0_8__2023_05.hex",
-      "name": "HMS_2T_1_0_8__2023_05",
+      "path": "HMS/HMS_2T_1_0_8.hex",
+      "name": "HMS_2T_1_0_8",
       "family": "HMS",
       "folder": "HMS",
       "size": 231844,
@@ -223,8 +240,8 @@
       "date": "2023-05-04T14:56:00"
     },
     {
-      "path": "HMS/HMS_2T_1_3_9__2024_10.hex",
-      "name": "HMS_2T_1_3_9__2024_10",
+      "path": "HMS/HMS_2T_1_3_9.hex",
+      "name": "HMS_2T_1_3_9",
       "family": "HMS",
       "folder": "HMS",
       "size": 252080,
@@ -241,8 +258,8 @@
       "date": "2024-10-17T20:26:00"
     },
     {
-      "path": "HMS/HMS_4T_1_0_27__2023_06.hex",
-      "name": "HMS_4T_1_0_27__2023_06",
+      "path": "HMS/HMS_4T_1_0_27.hex",
+      "name": "HMS_4T_1_0_27",
       "family": "HMS",
       "folder": "HMS",
       "size": 252292,
@@ -257,8 +274,8 @@
       "date": "2023-06-05T10:24:00"
     },
     {
-      "path": "HMS/HMS_4T_1_1_12__2024_09.hex",
-      "name": "HMS_4T_1_1_12__2024_09",
+      "path": "HMS/HMS_4T_1_1_12.hex",
+      "name": "HMS_4T_1_1_12",
       "family": "HMS",
       "folder": "HMS",
       "size": 243380,
@@ -273,8 +290,8 @@
       "date": "2024-09-02T20:57:00"
     },
     {
-      "path": "HMS/HMS_4T_2_0_4__2024_12.hex",
-      "name": "HMS_4T_2_0_4__2024_12",
+      "path": "HMS/HMS_4T_2_0_4.hex",
+      "name": "HMS_4T_2_0_4",
       "family": "HMS",
       "folder": "HMS",
       "size": 252728,
@@ -289,8 +306,8 @@
       "date": "2024-12-19T17:49:00"
     },
     {
-      "path": "HMS/HMS_4T_Thailand_1_1_18__2024_12.hex",
-      "name": "HMS_4T_Thailand_1_1_18__2024_12",
+      "path": "HMS/HMS_4T_Thailand_1_1_18.hex",
+      "name": "HMS_4T_Thailand_1_1_18",
       "family": "HMS",
       "folder": "HMS",
       "size": 247288,
@@ -305,8 +322,8 @@
       "date": "2024-12-13T18:14:00"
     },
     {
-      "path": "HMS/HMS_4T_Thailand_1_1_29__2026_08.hex",
-      "name": "HMS_4T_Thailand_1_1_29__2026_08",
+      "path": "HMS/HMS_4T_Thailand_1_1_29.hex",
+      "name": "HMS_4T_Thailand_1_1_29",
       "family": "HMS",
       "folder": "HMS",
       "size": 252840,
@@ -321,8 +338,24 @@
       "date": "2026-08-25T11:04:00"
     },
     {
-      "path": "HMT/HMT_4T_1_1_5__2025_08.hex",
-      "name": "HMT_4T_1_1_5__2025_08",
+      "path": "HMS/HMS_4T_Thailand_1_1_90.hex",
+      "name": "HMS_4T_Thailand_1_1_90",
+      "family": "HMS",
+      "folder": "HMS",
+      "size": 242348,
+      "sha256": "c0160bf303e60a339ee103860f7480bfe2a3de435897d8171000fabb3abeb517",
+      "rows": 3196,
+      "identity": "10121000",
+      "version_code": 10190,
+      "version": "1.1.90",
+      "serial_prefixes": [
+        "1164"
+      ],
+      "date": "2026-08-20T17:59:00"
+    },
+    {
+      "path": "HMT/HMT_4T_1_1_5.hex",
+      "name": "HMT_4T_1_1_5",
       "family": "HMT",
       "folder": "HMT",
       "size": 334012,
@@ -340,8 +373,8 @@
       ]
     },
     {
-      "path": "HMT/HMT_6T_1_2_27__2024_06.hex",
-      "name": "HMT_6T_1_2_27__2024_06",
+      "path": "HMT/HMT_6T_1_2_27.hex",
+      "name": "HMT_6T_1_2_27",
       "family": "HMT",
       "folder": "HMT",
       "size": 346596,
@@ -356,8 +389,8 @@
       "date": "2024-06-20T14:52:00"
     },
     {
-      "path": "MI/MI-1000__00_02_42__2019_03.hex",
-      "name": "MI-1000__00_02_42__2019_03",
+      "path": "MI/MI-1000__0_2_42__2019_03.hex",
+      "name": "MI-1000__0_2_42__2019_03",
       "family": "MI",
       "folder": "MI",
       "size": 179388,
