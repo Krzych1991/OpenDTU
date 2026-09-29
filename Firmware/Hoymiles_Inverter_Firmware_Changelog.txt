@@ -27,7 +27,6 @@ HM-1T   V01.00.17 -> V01.01.00   (built 2024-01)
   Added:
     - Control loop soft-foldback limiter (scales input down ~0.1x on overshoot).
     - Grid-frequency in-band debounce counter.
-    - Explicit power-limit COMMIT sub-mode (0x40) in the 0x51 control path.
   Changed:
     - ePWM output config now runtime-switchable between two modes (was fixed).
     - 0x51 reply builders refactored.
@@ -51,7 +50,6 @@ HM-2T   V01.00.16 -> V01.01.02   (built 2024-01)
   Added:
     - Control loop soft-foldback limiter.
     - Grid-frequency in-band debounce counter.
-    - Explicit power-limit COMMIT sub-mode (0x40).
     - Phase-aware grid support (2-phase / 3-phase) with volt-watt + freq-watt derating.
   Changed:
     - ePWM output config now runtime-switchable between two modes (was fixed).
@@ -73,7 +71,6 @@ HM-4T   V01.00.18 -> V01.01.03   (built 2024-02)
   Added:
     - Control loop soft-foldback limiter.
     - Grid-frequency in-band debounce counter.
-    - Explicit power-limit COMMIT sub-mode (0x40).
     - Multi-channel phase-aware grid support / derating.
   Changed:
     - ePWM output config now runtime-switchable between two modes (was fixed).
