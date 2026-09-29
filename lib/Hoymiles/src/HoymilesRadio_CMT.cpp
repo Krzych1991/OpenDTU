@@ -221,7 +221,7 @@ void HoymilesRadio_CMT::loop()
                     srcSerial,
                     dstSerial,
                     f.len,
-                    Utils::dumpArray(f.fragment, f.len).c_str());
+                    HoymilesUtils::dumpArray(f.fragment, f.len).c_str());
             }
             // --- End Capture Mode ---
 
@@ -235,7 +235,7 @@ void HoymilesRadio_CMT::loop()
                 if (nullptr != inv) {
                     // Save packet in inverter rx buffer
                     ESP_LOGD(TAG, "RX %.2f MHz --> %s | %" PRId8 " dBm",
-                        getFrequencyFromChannel(f.channel) / 1000000.0, Utils::dumpArray(f.fragment, f.len).c_str(), f.rssi);
+                        getFrequencyFromChannel(f.channel) / 1000000.0, HoymilesUtils::dumpArray(f.fragment, f.len).c_str(), f.rssi);
 
                     inv->addRxFragment(f.fragment, f.len, f.rssi);
                 } else {
@@ -251,7 +251,7 @@ void HoymilesRadio_CMT::loop()
         } else {
             if (_captureMode) {
                 ESP_LOGW(TAG, "CAPTURE: CRC failed | len=%u | %s",
-                    f.len, Utils::dumpArray(f.fragment, f.len).c_str());
+                    f.len, HoymilesUtils::dumpArray(f.fragment, f.len).c_str());
             } else {
                 ESP_LOGW(TAG, "Frame kaputt"); // ;-)
             }
