@@ -15,7 +15,7 @@ public:
     bool sunsetTime(struct tm* info) const;
     bool sunriseTime(struct tm* info) const;
     void setDoRecalc(const bool doRecalc);
-    bool wasAroundSunset(unsigned long millis);
+    bool wasAroundSunset(uint64_t millis);
 
 private:
     void loop();
@@ -29,7 +29,7 @@ private:
     uint32_t _sunriseMinutes = 0;
     uint32_t _sunsetMinutes = 0;
 
-    unsigned long _sunsetMillis = 0;
+    uint64_t _sunsetMillis = 0;
 
     bool _isValidInfo = false;
     std::atomic_bool _doRecalc = true;

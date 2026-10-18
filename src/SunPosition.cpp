@@ -119,7 +119,7 @@ void SunPositionClass::updateSunData()
     _sunriseMinutes = static_cast<int>(sunriseRaw);
     _sunsetMinutes = static_cast<int>(sunsetRaw);
 
-    const unsigned long millisAtMidnight = millis() - (timeinfo.tm_hour * 60ul + timeinfo.tm_min) * 60ul * 1000ul;
+    const uint64_t millisAtMidnight = millis() - (timeinfo.tm_hour * 60ul + timeinfo.tm_min) * 60ul * 1000ul;
     _sunsetMillis = millisAtMidnight + _sunsetMinutes * 60ul * 1000ul;
 
     _isSunsetAvailable = true;
@@ -152,10 +152,10 @@ bool SunPositionClass::sunriseTime(struct tm* info) const
     return getSunTime(info, _sunriseMinutes);
 }
 
-bool SunPositionClass::wasAroundSunset(unsigned long millis) {
+bool SunPositionClass::wasAroundSunset(uint64_t millis){
     if (_sunsetMillis==0) {
         return false;
     }
-    unsigned long duration_between = min(millis - _sunsetMillis, _sunsetMillis - millis);
+    const uint64_t duration_between = min(millis - _sunsetMillis, _sunsetMillis - millis);
     return duration_between < 5 * 60 * 1000ul;
 }
