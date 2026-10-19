@@ -110,12 +110,12 @@ void MqttHandleHassClass::publishConfig()
         publishInverterBinarySensor(inv, "Reachable", "status/reachable", "1", "0", DEVICE_CLS_CONNECTIVITY, STATE_CLS_NONE, CATEGORY_DIAGNOSTIC);
         publishInverterBinarySensor(inv, "Producing", "status/producing", "1", "0", DEVICE_CLS_NONE, STATE_CLS_NONE, CATEGORY_NONE);
 
-        publishInverterSensor(inv, "TX Requests", "radio/tx_request", "", "", DEVICE_CLS_NONE, STATE_CLS_NONE, CATEGORY_DIAGNOSTIC);
-        publishInverterSensor(inv, "RX Success", "radio/rx_success", "", "", DEVICE_CLS_NONE, STATE_CLS_NONE, CATEGORY_DIAGNOSTIC);
-        publishInverterSensor(inv, "RX Fail Receive Nothing", "radio/rx_fail_nothing", "", "", DEVICE_CLS_NONE, STATE_CLS_NONE, CATEGORY_DIAGNOSTIC);
-        publishInverterSensor(inv, "RX Fail Receive Partial", "radio/rx_fail_partial", "", "", DEVICE_CLS_NONE, STATE_CLS_NONE, CATEGORY_DIAGNOSTIC);
-        publishInverterSensor(inv, "RX Fail Receive Corrupt", "radio/rx_fail_corrupt", "", "", DEVICE_CLS_NONE, STATE_CLS_NONE, CATEGORY_DIAGNOSTIC);
-        publishInverterSensor(inv, "TX Re-Request Fragment", "radio/tx_re_request", "", "", DEVICE_CLS_NONE, STATE_CLS_NONE, CATEGORY_DIAGNOSTIC);
+        publishInverterSensor(inv, "TX Requests", "radio/tx_request", "", "", DEVICE_CLS_NONE, STATE_CLS_MEASUREMENT, CATEGORY_DIAGNOSTIC);
+        publishInverterSensor(inv, "RX Success", "radio/rx_success", "", "", DEVICE_CLS_NONE, STATE_CLS_MEASUREMENT, CATEGORY_DIAGNOSTIC);
+        publishInverterSensor(inv, "RX Fail Receive Nothing", "radio/rx_fail_nothing", "", "", DEVICE_CLS_NONE, STATE_CLS_MEASUREMENT, CATEGORY_DIAGNOSTIC);
+        publishInverterSensor(inv, "RX Fail Receive Partial", "radio/rx_fail_partial", "", "", DEVICE_CLS_NONE, STATE_CLS_MEASUREMENT, CATEGORY_DIAGNOSTIC);
+        publishInverterSensor(inv, "RX Fail Receive Corrupt", "radio/rx_fail_corrupt", "", "", DEVICE_CLS_NONE, STATE_CLS_MEASUREMENT, CATEGORY_DIAGNOSTIC);
+        publishInverterSensor(inv, "TX Re-Request Fragment", "radio/tx_re_request", "", "", DEVICE_CLS_NONE, STATE_CLS_MEASUREMENT, CATEGORY_DIAGNOSTIC);
         publishInverterSensor(inv, "RSSI", "radio/rssi", "dBm", "", DEVICE_CLS_SIGNAL_STRENGTH, STATE_CLS_NONE, CATEGORY_DIAGNOSTIC);
 
         // Loop all channels
