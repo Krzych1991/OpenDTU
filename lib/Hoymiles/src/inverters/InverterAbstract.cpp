@@ -79,7 +79,7 @@ bool InverterAbstract::isReachable()
     if (!_enablePolling) {
         return false;
     }
-    if (Statistics()->getRxFailureCount() <= _reachableThreshold) {
+    if (Statistics()->getRxFailureCount() <= _reachableThreshold && Statistics()->getLastUpdate() > 0) {
         return true;
     }
     return wasHeardRecently(static_cast<uint32_t>(_reachableThreshold) + 1);

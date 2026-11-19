@@ -27,9 +27,10 @@ const char* const deviceClass_name[] = { 0, "current", "energy", "power", "volta
 enum StateClassType {
     STATE_CLS_NONE = 0,
     STATE_CLS_MEASUREMENT,
-    STATE_CLS_TOTAL_INCREASING
+    STATE_CLS_TOTAL_INCREASING,
+    STATE_CLS_TOTAL
 };
-const char* const stateClass_name[] = { 0, "measurement", "total_increasing" };
+const char* const stateClass_name[] = { 0, "measurement", "total_increasing", "total" };
 
 enum CategoryType {
     CATEGORY_NONE = 0,
@@ -49,7 +50,7 @@ const byteAssign_fieldDeviceClass_t deviceFieldAssignment[] = {
     { FLD_IDC, DEVICE_CLS_CURRENT, STATE_CLS_MEASUREMENT },
     { FLD_PDC, DEVICE_CLS_PWR, STATE_CLS_MEASUREMENT },
     { FLD_YD, DEVICE_CLS_ENERGY, STATE_CLS_TOTAL_INCREASING },
-    { FLD_YT, DEVICE_CLS_ENERGY, STATE_CLS_TOTAL_INCREASING },
+    { FLD_YT, DEVICE_CLS_ENERGY, STATE_CLS_TOTAL },
     { FLD_UAC, DEVICE_CLS_VOLTAGE, STATE_CLS_MEASUREMENT },
     { FLD_IAC, DEVICE_CLS_CURRENT, STATE_CLS_MEASUREMENT },
     { FLD_PAC, DEVICE_CLS_PWR, STATE_CLS_MEASUREMENT },
@@ -85,8 +86,8 @@ private:
     static void publishInverterBinarySensor(std::shared_ptr<InverterAbstract> inv, const String& name, const String& state_topic, const String& payload_on, const String& payload_off, const DeviceClassType device_class, const StateClassType state_class, const CategoryType category);
 
     // Sensor
-    static void publishSensor(JsonDocument& doc, const String& root_device, const String& unique_id_prefix, const String& name, const String& state_topic, const String& unit_of_measure, const String& icon, const DeviceClassType device_class, const StateClassType state_class, const CategoryType category);
-    static void publishDtuSensor(const String& name, const String& state_topic, const String& unit_of_measure, const String& icon, const DeviceClassType device_class, const StateClassType state_class, const CategoryType category);
+    static void publishSensor(JsonDocument& doc, const String& root_device, const String& unique_id_prefix, const String& name, const String& state_topic, const String& unit_of_measure, const String& icon, const DeviceClassType device_class, const StateClassType state_class, const CategoryType category, const String& extra_availability_topic = "");
+    static void publishDtuSensor(const String& name, const String& state_topic, const String& unit_of_measure, const String& icon, const DeviceClassType device_class, const StateClassType state_class, const CategoryType category, const String& extra_availability_topic = "");
     static void publishInverterSensor(std::shared_ptr<InverterAbstract> inv, const String& name, const String& state_topic, const String& unit_of_measure, const String& icon, const DeviceClassType device_class, const StateClassType state_class, const CategoryType category);
 
     static void publishInverterField(std::shared_ptr<InverterAbstract> inv, const ChannelType_t type, const ChannelNum_t channel, const byteAssign_fieldDeviceClass_t fieldType, const bool clear = false);
